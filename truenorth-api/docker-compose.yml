@@ -1,0 +1,64 @@
+version: "3.8"
+
+services:
+  dev:
+    container_name: truenorth_dev
+    image: truenorth
+    env_file: configuration/development.env
+    build:
+      context: .
+      target: development
+      dockerfile: ./Dockerfile
+    command: npm run start:debug
+    ports:
+      - 9000:9000
+      - 9229:9229
+    depends_on: [truenorth-pgadmin-compose]
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://localhost:6000"
+        tag: "logger-truenorth"
+        # Required parameters for request
+    networks:
+      - truenorth_net
+    volumes:
+      - .:/usr/src/app
+      - ./node_modules:/usr/src/app/node_modules
+    restart: unless-stopped
+
+  truenorth_postgres:
+    image: postgres:latest
+    hostname: truenorth_postgres
+    container_name: truenorth_postgres
+    restart: always
+    ports:
+      - 5433:5432
+    volumes:
+      - type: volume
+        source: truenorth_db_data
+        target: /var/lib/postgresql/data
+    networks:
+      - truenorth_net
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: truenorth
+      POSTGRES_USER: gerald
+      PGDATA: /var/lib/postgresql/data/pgdata
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -h redspider_postgres -p 5432 -d truenorth -U gerald",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  truenorth_db_data:
+    external: true
+
+networks:
+  truenorth_net:
+    external: true

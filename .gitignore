@@ -1,0 +1,37 @@
+# API
+truenorth-api/logs
+truenorth-api/*.log
+truenorth-api/npm-debug.log*
+truenorth-api/yarn-debug.log*
+truenorth-api/yarn-error.log*
+truenorth-api/pnpm-debug.log*
+truenorth-api/lerna-debug.log*
+truenorth-api/node_modules
+truenorth-api/dist
+truenorth-api/dist-ssr
+truenorth-api/*.local\
+truenorth-api/.vscode/*
+truenorth-api/!.vscode/extensions.json
+truenorth-api/product_images
+truenorth-api/configuration/*
+truenorth-api/files/*
+truenorth-api/.DS_Store
+truenorth-api/.serverless
+truenorth-api/.env
+
+# Webvi env
+truenorth-web/.env
+truenorth-web/logs
+truenorth-web/*.log
+truenorth-web/npm-debug.log*
+truenorth-web/yarn-debug.log*
+truenorth-web/yarn-error.log*
+truenorth-web/pnpm-debug.log*
+truenorth-web/lerna-debug.log*
+truenorth-web/node_modules
+truenorth-web/dist
+truenorth-web/dist
+truenorth-web/*.local
+truenorth-web/.vscode/*
+truenorth-web/!.vscode/extensions.json
+truenorth-web/.env.production
