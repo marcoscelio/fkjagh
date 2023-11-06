@@ -1,3 +1,18 @@
+# Overview
+
+This application is is an example using backend Node JS framework NestJS and Frontend in React with TailwindCSS.
+
+The backend applocation is a modular based on MVC pattern, it integrates to Postgres Database using library Typeorm. It also has documentation with Swagger integration.
+We can easily do TDD creating jest based unit tests files and automate its suite execution with command:
+
+npm run test
+
+The frontend is a React application built with Vite. It provides rapid building and configuration tools.
+The application UI style was based on Tailwind CSS which brings a flexible and productive development.
+State management is applied with RTK (Reduxc Tool Kit).
+
+Any comments, questions or suggestion please, contact: vinicius.global@gmail.com
+
 # KK API
 
 Nest JS framework based application1
@@ -6,8 +21,21 @@ Nest JS framework based application1
 
 Docker
 Node 17.x
+POstgres Database
 
 # Backend
+
+# Database
+
+1. It is required to have a Postgres database
+2. We can use docker container for local postgres databse:
+
+Ex:
+docker run -d --name test-postgres -p 5432:5432 -e POSTGRES_PASSWORD=admin123 postgres
+
+# Docker
+
+- It was implemented a docker file where we can use for docker container support deployment: Kubernates cluster, AWS Fargate, etc.
 
 # Build
 
